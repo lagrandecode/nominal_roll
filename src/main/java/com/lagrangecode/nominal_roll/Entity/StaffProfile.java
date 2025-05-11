@@ -16,7 +16,7 @@ import java.util.UUID;
 public class StaffProfile {
     @Id
     @GeneratedValue
-    private UUID id;
+    private UUID staffId;
 
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false, unique = true)

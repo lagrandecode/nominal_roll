@@ -16,12 +16,18 @@ import com.lagrangecode.nominal_roll.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 public class AuthService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final StaffProfileRepository staffProfileRepository;
     private final AuthenticationManager authenticationManager;
+
+    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder, StaffProfileRepository staffProfileRepository,AuthenticationManager authenticationManager) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.staffProfileRepository = staffProfileRepository;
+        this.authenticationManager = authenticationManager;
+    }
 
     public User register(RegisterRequest request) {
         if (userRepository.findByEmail(request.getEmail()).isPresent()) {
